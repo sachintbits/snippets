@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+<form>
+<select name="country" id="country" onchange="dataFetcher(this)">
+<option value="" selected>SELECT COUNTRY</option>
+<option value="INDIA">INDIA</option>
+<option value="USA">USA</option>
+<option value="RUSSIA">RUSSIA</option>
+
+</select>
+<br>
+District Names:
+<br>
+<select name="district" id="district">
+    <option value="" disabled>Select District</option>
+</select>
+</form>
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+<script>
+    const INDIA = ["Davangere","Bangalore","Shimoga","Mysore"];
+    const USA = ["WDC","Alaska","Arkansas","California"];
+    const RUSSIA = ["Selemdzhinsky","Seryshevsky","Shimanovsky","Skovorodinsky"];
+    function dataFetcher(country) {
+        let countryName = country.value;
+        //fetchData with the name of the item using ajax to server
+        districtRef = document.getElementById("district");
+
+        if(countryName === "INDIA") {
+            $('#district option').remove();
+            $('#district').append($('<option>', {
+                value: "",
+                text: 'SELECT DISTRICT',
+                disabled: "disabled",
+                selected: "selected"
+            }));
+            $.each(INDIA, function (i, item) {
+                $('#district').append($('<option>', { 
+                    value: item,
+                    text : item 
+                }));
+            });
+        } else if(countryName === "RUSSIA") {
+            $('#district option').remove();
+            $('#district').append($('<option>', {
+                value: "",
+                text: 'SELECT DISTRICT',
+                disabled: "disabled",
+                selected: "selected"
+            }));
+            $.each(RUSSIA, function (i, item) {
+                $('#district').append($('<option>', { 
+                    value: item,
+                    text : item 
+                }));
+            });
+        } else if(countryName === "USA") {
+            $('#district option').remove();
+            $('#district').append($('<option>', {
+                value: "",
+                text: 'SELECT DISTRICT',
+                disabled: "disabled",
+                selected: "selected"
+            }));
+            $.each(USA, function (i, item) {
+                $('#district').append($('<option>', { 
+                    value: item,
+                    text : item 
+                }));
+            });
+        }
+    }
+</script>
+
+</body>
+</html>
